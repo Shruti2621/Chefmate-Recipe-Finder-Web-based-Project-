@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Finder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo-container">
+                <img src="chefmate.png" alt="Logo" class="logo">
+                <span class="logo-text"></span>
+            </div>
+            <ul class="menu">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Our Members' Recipes</a></li>
+                <li><a href="#">Upload Recipes</a></li>
+                <li><a href="#">Contact Us</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Find Your Favorite Recipe Instantly!</h1>
+        </div>
+    </section>
+
+    <!-- Search Bar -->
+    <section class="search-container">
+        <input type="text" id="search" placeholder="Search for a recipe...">
+        <button onclick="redirectToResults()">Search</button>
+    </section>
+<!-- Upload Recipe Info Section -->
+<section class="upload-info-container">
+    <div class="upload-card">
+        <h3>Your Recipe, Their Inspiration!</h3>
+        <p>Upload your unique recipes, showcase your talent, and inspire others with your creativity.</p>
+        <a href="upload.html" class="upload-btn">Upload Content</a>
+    </div>
+    <div class="upload-card">
+        <h3>Discover Unique Flavors!</h3>
+        <p>Access a collection of user-submitted recipes and explore new and exciting dishes.</p>
+        <a href="recipes.html" class="view-btn">View Recipes</a>
+    </div>
+    <!-- Upload Recipe Form -->
+<section class="upload-form-container">
+    <h2>Upload Your Recipe</h2>
+    <form action="upload.php" method="POST" enctype="multipart/form-data">
+        <label for="recipe-name">Recipe Name</label>
+        <input type="text" id="recipe-name" name="recipe-name" placeholder="Enter recipe name" required>
+
+        <label for="ingredients">Ingredients</label>
+        <textarea id="ingredients" name="ingredients" placeholder="List ingredients" required></textarea>
+
+        <label for="steps">Steps</label>
+        <textarea id="steps" name="steps" placeholder="Enter preparation steps" required></textarea>
+
+        <label for="image">Upload Image</label>
+        <input type="file" id="image" name="image" accept="image/*" required>
+
+        <button type="submit" class="upload-recipe-btn">Upload Recipe</button>
+    </form>
+</section>
+
+</section>
+    <script>
+        function redirectToResults() {
+            let query = document.getElementById("search").value;
+            if (query) {
+                window.location.href = `results.html?search=${query}`;
+            }
+        }
+    </script>
+</body>
+</html>

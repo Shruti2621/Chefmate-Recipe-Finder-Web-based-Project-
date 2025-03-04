@@ -1,0 +1,380 @@
+/* General Styles */
+body {
+    
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background: #f5f5f5;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    background: none;
+    padding: 15px 20px;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 70px;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin-left: auto;
+    white-space: nowrap;
+    padding-right: 20px;
+}
+
+.menu li {
+    display: inline-block;
+}
+
+.menu li a {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    transition: 0.3s ease-in-out;
+}
+
+/* Hover and Click Glow Effect */
+.menu li a:hover, .menu li a:focus {
+    color: #ff5722;
+    text-shadow: 0px 0px 10px rgba(255, 87, 34, 0.8);
+    transition: 0.3s ease-in-out;
+}
+
+/* Hero Section */
+.hero {
+    background: url('bg.jpg') center/cover no-repeat;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+    position: relative;
+    width: 100%;
+    margin-top: 0;
+}
+
+.hero h1 {
+    font-size: 32px;
+}
+
+/* Search Bar */
+.search-container {
+    margin: 70px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    width: 600px;
+}
+
+#search {
+    width: 80%;
+    padding: 8px;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+}
+
+button {
+    padding: 8px 15px;
+    background: #0a0909;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: 0.3s ease-in-out;
+}
+
+button:hover {
+    background: #e64a19;
+}
+
+/* Recipe Results */
+#recipe-results {
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: left;
+}
+
+.recipe {
+    background: #fff5e1;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 20px auto;
+    text-align: left;
+    border-radius: 10px;
+}
+
+.recipe h2 {
+    text-align: center;
+}
+
+.recipe img {
+    display: block;
+    margin: 10px auto;
+    border-radius: 8px;
+}
+
+.recipe ul {
+    padding-left: 20px;
+    line-height: 1.5;
+}
+/* Recipe Container */
+.recipe-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    margin: auto;
+}
+
+/* Recipe Card */
+.recipe-card {
+    width: 30%;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: 0.3s ease-in-out;
+    padding-bottom: 10px;
+}
+
+.recipe-card img {
+    width: 100%;
+    height: 200px;
+    object-fit:contain;
+}
+
+.recipe-info {
+    padding: 15px;
+}
+
+.recipe-info h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.view-recipe-btn {
+    display: inline-block;
+    padding: 8px 14px;
+    background: #141516;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.view-recipe-btn:hover {
+    background: #db4019;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    text-align: center;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-content img {
+    width: 50%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+}
+
+@media (max-width: 1024px) {
+    .recipe-card {
+        width: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    .recipe-card {
+        width: 100%;
+    }
+    .modal-content {
+        width: 80%;
+    }
+}
+
+/* Upload Info Section */
+.upload-info-container {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    margin: 40px auto;
+    width: 80%;
+    flex-wrap: wrap;
+}
+
+.upload-card {
+    width: 45%;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: 0.3s ease-in-out;
+}
+
+.upload-card:hover {
+    transform: scale(1.05);
+}
+
+.upload-card h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.upload-card p {
+    font-size: 16px;
+    color: #555;
+}
+
+.upload-btn, .view-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background: #cc2115;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+}
+
+.upload-btn:hover, .view-btn:hover {
+    background: #b32400;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .upload-info-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .upload-card {
+        width: 90%;
+    }
+}
+/* Upload Form Container */
+.upload-form-container {
+    width: 50%;
+    margin: 40px auto;
+    background: white;
+    text-align:left;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Form Inputs */
+.upload-form-container input, 
+.upload-form-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.upload-form-container h2{
+    text-align:center;
+}
+
+/* Upload Button */
+.upload-recipe-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background: black;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+    border: none;
+    font-size: 16px;
+}
+
+.upload-recipe-btn:hover {
+    background: #050201;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .upload-form-container {
+        width: 80%;
+    }
+}

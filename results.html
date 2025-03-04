@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2 class="section-title">Searched Recipes</h2>
+    <section id="recipe-results" class="recipe-container"></section>
+
+    <!-- Popup Modal -->
+    <div id="recipe-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="modal-title"></h2>
+            <img id="modal-image" src="" alt="">
+            <h3>Ingredients:</h3>
+            <ul id="modal-ingredients"></ul>
+            <h3>Instructions:</h3>
+            <p id="modal-instructions"></p>
+        </div>
+    </div>
+
+    <script>
+        async function fetchRecipes() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get("search");
+
+            if (!query) {
+                document.getElementById("recipe-results").innerHTML = "<h3>No search query provided.</h3>";
+                return;
+            }
+
+            const API_URL = `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`;
+
+            try {
+                let response = await fetch(API_URL);
+                let data = await response.json();
+
+                if (!data.meals) {
+                    document.getElementById("recipe-results").innerHTML = "<h3>No recipes found. Try again!</h3>";
+                    return;
+                }
+
+                let resultsHTML = "";
+                data.meals.forEach(meal => {
+                    resultsHTML += `
+                        <div class="recipe-card">
+                            <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+                            <div class="recipe-info">
+                                <h3>${meal.strMeal}</h3>
+                                <button class="view-recipe-btn" onclick='openModal(${JSON.stringify(meal)})'>View</button>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                document.getElementById("recipe-results").innerHTML = resultsHTML;
+            } catch (error) {
+                document.getElementById("recipe-results").innerHTML = "<h3>Error fetching recipes. Try again!</h3>";
+            }
+        }
+
+        function openModal(meal) {
+            if (!meal) return;
+            document.getElementById("modal-title").innerText = meal.strMeal || "No title available";
+            document.getElementById("modal-image").src = meal.strMealThumb || "";
+            document.getElementById("modal-instructions").innerText = meal.strInstructions || "No instructions available";
+            
+            let ingredientsList = "";
+            for (let i = 1; i <= 20; i++) {
+                if (meal[`strIngredient${i}`] && meal[`strIngredient${i}`].trim() !== "") {
+                    ingredientsList += `<li>${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}</li>`;
+                }
+            }
+            document.getElementById("modal-ingredients").innerHTML = ingredientsList || "<li>No ingredients available</li>";
+            
+            document.getElementById("recipe-modal").style.display = "flex";
+        }
+
+        document.querySelector(".close-btn").addEventListener("click", function() {
+            document.getElementById("recipe-modal").style.display = "none";
+        });
+
+        fetchRecipes();
+    </script>
+</body>
+</html>
